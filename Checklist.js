@@ -27,10 +27,14 @@ function sendMessage(sheetName) {
 }
 
 function sendChecklist(sheetName) {
-  hideSheetsExcept(sheetName)
-  sendMessage(sheetName)
-  showSheetsExcept(sheetName)
-  SpreadsheetApp.getUi().alert("Successfully submitted " + sheetName);
+  ui = SpreadsheetApp.getUi()
+  var response = ui.alert("Are you sure you want to send " + sheetName + "?", ui.ButtonSet.YES_NO);
+  if (response == ui.Button.YES) {
+    hideSheetsExcept(sheetName)
+    sendMessage(sheetName)
+    showSheetsExcept(sheetName)
+    SpreadsheetApp.getUi().alert("Successfully submitted " + sheetName);
+  }
 }
 
 function sendChecklistDynamic() {
