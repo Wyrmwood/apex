@@ -30,6 +30,7 @@ function sendChecklist(sheetName) {
   hideSheetsExcept(sheetName)
   sendMessage(sheetName)
   showSheetsExcept(sheetName)
+  SpreadsheetApp.getUi().alert("Successfully submitted " + sheetName);
 }
 
 function sendChecklistDynamic() {
