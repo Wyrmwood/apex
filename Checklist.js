@@ -1,17 +1,20 @@
 function hideSheetsExcept(sheetName) {
-  var sheets=SpreadsheetApp.getActiveSpreadsheet().getSheets();
-  for(var i =0; i<sheets.length; i++){
-    if(sheets[i].getName() != sheetName) {
-      sheets[i].hideSheet();
-    }
-  }
+  changeVisibilitySheetsExcept(sheetName, True)
 }
 
 function showSheetsExcept(sheetName) {
+  changeVisibilitySheetsExcept(sheetName)
+}
+
+function changeVisibilitySheetsExcept(sheetName, hide=false) {
   var sheets=SpreadsheetApp.getActiveSpreadsheet().getSheets();
   for(var i =0; i<sheets.length; i++){
     if(sheets[i].getName() != sheetName) {
-      sheets[i].showSheet();
+      if (hide) {
+        sheets[i].hideSheet();
+      } else {
+        sheets[i].showSheet();
+      }
     }
   }
 }
